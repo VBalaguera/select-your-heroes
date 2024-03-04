@@ -7,3 +7,25 @@
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
 }
+
+/* buttons */
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  font-size: 14px;
+  padding: .5rem .9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  background-color: orangered;
+  color: white;
+  box-shadow: 8px;
+  transition: all .3s ease-in-out;
+}
+
+button:hover {
+  background-color: black;
+  color: orangered;
+  transition: all .3s ease-in-out;
+}

@@ -13,7 +13,8 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as FavoritesImport } from './routes/favorites'
+import { Route as PersonajesImport } from './routes/personajes'
+import { Route as FavoritosImport } from './routes/favoritos'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as LayoutLayoutExampleRouteImport } from './routes/_layout/layout-example/route'
 
@@ -23,8 +24,13 @@ const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
 
-const FavoritesRoute = FavoritesImport.update({
-  path: '/favorites',
+const PersonajesRoute = PersonajesImport.update({
+  path: '/personajes',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const FavoritosRoute = FavoritosImport.update({
+  path: '/favoritos',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -55,8 +61,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutImport
       parentRoute: typeof rootRoute
     }
-    '/favorites': {
-      preLoaderRoute: typeof FavoritesImport
+    '/favoritos': {
+      preLoaderRoute: typeof FavoritosImport
+      parentRoute: typeof rootRoute
+    }
+    '/personajes': {
+      preLoaderRoute: typeof PersonajesImport
       parentRoute: typeof rootRoute
     }
     '/_layout/layout-example': {
@@ -71,7 +81,8 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren([
   IndexLazyRoute,
   LayoutRoute.addChildren([LayoutLayoutExampleRouteRoute]),
-  FavoritesRoute,
+  FavoritosRoute,
+  PersonajesRoute,
 ])
 
 /* prettier-ignore-end */

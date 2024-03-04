@@ -1,9 +1,11 @@
-import './index.css'
+import PageTitle from './components/ui/PageTitle'
 
 function App() {
   return (
     <>
-      <div>app</div>
+      <div className='flex flex-col gap-2'>
+        <PageTitle text={'Bienvenido'} />
+      </div>
     </>
   )
 }
