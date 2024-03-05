@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
-import { PersonajeItemProps } from '../../interfaces/personajes'
+import { PersonajeItemProps } from '../../types/personajes'
 import {
   comprobarFavoritoExiste,
   filtrarFavoritoExistente,
 } from '../../helpers/utils'
-import PersonajeItemStatus from './PersonajeItemStatus'
 import PersonajeItemImage from './PersonajeItemImage'
 import PersonajeItemInfo from './PersonajeItemInfo'
 

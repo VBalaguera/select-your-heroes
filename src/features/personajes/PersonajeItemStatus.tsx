@@ -10,7 +10,7 @@ export default function PersonajeItemStatus({
   console.log(typeof status)
   return (
     <span
-      className={`text-[white] font-bold px-4 py-[.4rem] rounded-[13px] capitalize
+      className={`text-[white] font-bold px-4 py-[.4rem] rounded-[8px] capitalize
  personaje-status-${status}`}
     >
       {status}

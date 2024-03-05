@@ -1,30 +1,18 @@
 import { Link } from '@tanstack/react-router'
+import HeaderLinks from './HeaderLinks'
 
 export default function Header() {
   return (
     <nav className='pb-4 flex justify-between items-center'>
       <span className='text-2xl font-bold'>
-        <Link to='/' className='[&.active]:font-bold'>
+        <Link
+          to='/'
+          className='[&.active]:font-bold [&.active]:text-[orangered]  hover:text-[orangered] transition:all_.3s_ease-in-out hover:[transition:all_.3s_ease-in-out]'
+        >
           Select your heroes
         </Link>
       </span>
-      <ul className='flex gap-2 items-center'>
-        <li>
-          <Link to='/personajes' className='[&.active]:font-bold'>
-            Personajes
-          </Link>
-        </li>
-        <li>
-          <Link to='/favoritos' className='[&.active]:font-bold'>
-            Favoritos
-          </Link>
-        </li>
-        {/* <li>
-          <Link to='/layout-example' className='[&.active]:font-bold'>
-            Layout example
-          </Link>
-        </li> */}
-      </ul>
+      <HeaderLinks />
     </nav>
   )
 }

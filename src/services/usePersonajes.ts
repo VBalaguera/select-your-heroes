@@ -1,16 +1,16 @@
 // custom hook usando llamada API
-import { getCharacters } from './apiCharacters'
+import { getPersonajes } from './apiPersonajes'
 import { useQuery } from '@tanstack/react-query'
 
 export default function useCharacters() {
   const { isLoading, data, error } = useQuery({
     // identify data
     // needs to be an arr
-    queryKey: ['characters'],
+    queryKey: ['personajes'],
     // function for querying
     // returns a promise
     // could be any function
-    queryFn: getCharacters,
+    queryFn: getPersonajes,
   })
 
   return {

@@ -13,21 +13,15 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as PersonajesImport } from './routes/personajes'
 import { Route as FavoritosImport } from './routes/favoritos'
 import { Route as LayoutImport } from './routes/_layout'
-import { Route as LayoutLayoutExampleRouteImport } from './routes/_layout/layout-example/route'
+import { Route as PersonajesIdImport } from './routes/personajes/$id'
 
 // Create Virtual Routes
 
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
-
-const PersonajesRoute = PersonajesImport.update({
-  path: '/personajes',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const FavoritosRoute = FavoritosImport.update({
   path: '/favoritos',
@@ -44,9 +38,9 @@ const IndexLazyRoute = IndexLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
 
-const LayoutLayoutExampleRouteRoute = LayoutLayoutExampleRouteImport.update({
-  path: '/layout-example',
-  getParentRoute: () => LayoutRoute,
+const PersonajesIdRoute = PersonajesIdImport.update({
+  path: '/personajes/$id',
+  getParentRoute: () => rootRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -65,13 +59,9 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FavoritosImport
       parentRoute: typeof rootRoute
     }
-    '/personajes': {
-      preLoaderRoute: typeof PersonajesImport
+    '/personajes/$id': {
+      preLoaderRoute: typeof PersonajesIdImport
       parentRoute: typeof rootRoute
-    }
-    '/_layout/layout-example': {
-      preLoaderRoute: typeof LayoutLayoutExampleRouteImport
-      parentRoute: typeof LayoutImport
     }
   }
 }
@@ -80,9 +70,9 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexLazyRoute,
-  LayoutRoute.addChildren([LayoutLayoutExampleRouteRoute]),
+  LayoutRoute,
   FavoritosRoute,
-  PersonajesRoute,
+  PersonajesIdRoute,
 ])
 
 /* prettier-ignore-end */

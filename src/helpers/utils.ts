@@ -1,4 +1,4 @@
-import { PersonajeItemProps } from '../interfaces/personajes'
+import { PersonajeItemProps } from '../types/personajes'
 
 // recibe arr objs y obj/num
 // comprueba si en el arr objs hay un obj con un valor especificado

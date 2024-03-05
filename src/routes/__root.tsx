@@ -9,7 +9,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       // time that the data will remain in cache
-      staleTime: 10 * 1000,
+      staleTime: 0,
     },
   },
 })
