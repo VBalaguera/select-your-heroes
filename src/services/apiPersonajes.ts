@@ -1,11 +1,11 @@
 // llamada API
 import axios from 'axios'
 
-const url = 'https://rickandmortyapi.com/api/character'
+const url = 'https://rickandmortyapi.com/api/character/'
 
 //
-export async function getPersonajes() {
-  const res = await axios.get(url)
+export async function getPersonajes(page: number) {
+  const res = await axios.get(`${url}?page=${page}`)
 
   return res.data
 }
