@@ -1,6 +1,6 @@
 import useCharacters from '../../services/useCharacters'
 import { PersonajeItemProps } from '../../interfaces/personajes'
-import CharacterItem from './PersonajeItem'
+import PersonajeItemParent from './PersonajeItem'
 
 export default function PersonajesList() {
   const { data, isLoading, error } = useCharacters()
@@ -14,7 +14,12 @@ export default function PersonajesList() {
   return (
     <div className='flex flex-col gap-2'>
       {data.results.map((item: PersonajeItemProps) => (
-        <CharacterItem {...item} key={item.id} />
+        <PersonajeItemParent key={item.id}>
+          <PersonajeItemParent.Status status={item.status} />
+          <PersonajeItemParent.Image image={item.image} name={item.name} />
+          <PersonajeItemParent.Info {...item} />
+          <PersonajeItemParent.Button {...item} />
+        </PersonajeItemParent>
       ))}
     </div>
   )

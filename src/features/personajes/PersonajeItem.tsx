@@ -1,11 +1,60 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect, ReactNode } from 'react'
 import { PersonajeItemProps } from '../../interfaces/personajes'
 import {
   comprobarFavoritoExiste,
   filtrarFavoritoExistente,
 } from '../../helpers/utils'
 
-const PersonajeItem = ({
+// for the compound comp pattern I will need:
+// PersonajeItem parent comp
+// PersonajeItemInfo child comp
+// PersonajeItemStatus child comp
+// PersonajeItemImage child comp
+// PersonajeItemButton child comp
+
+// TODO: refactor, clean
+interface PersonajeItemParentProps {
+  children: ReactNode
+}
+
+type PersonajeItemImageProps = {
+  image: string
+  name: string
+}
+
+type PersonajeItemInfoProps = {
+  name: string
+  gender: string
+  species: string
+  origin: {
+    name: string
+  }
+  location: {
+    name: string
+  }
+  episode: string[]
+}
+
+type PersonajeItemStatusProps = {
+  status: string
+}
+
+const PersonajeItem = ({ children }: PersonajeItemParentProps) => {
+  return (
+    <div
+      className={`flex flex-col items-center justify-center gap-2 w-[400px] h-[500px] border-[1px] border-[solid] border-[black] rounded-[14px] personaje-${status} p-4`}
+    >
+      {React.Children.map(children, (child) => {
+        if (React.isValidElement(child)) {
+          return React.cloneElement(child)
+        }
+        return child
+      })}
+    </div>
+  )
+}
+
+const PersonajeButton = ({
   id,
   image,
   name,
@@ -68,33 +117,61 @@ const PersonajeItem = ({
     localStorage.setItem('favoritos', JSON.stringify(favoritosFiltrados))
   }
   return (
-    <div
-      className={`flex flex-col items-center justify-center gap-2 w-[400px] h-[500px] border-[1px] border-[solid] border-[black] rounded-[14px] personaje-${status} p-6`}
-    >
-      {/* image */}
-      <div className='w-full h-[250px] overflow-hidden flex items-center justify-center'>
-        <img src={image} alt={name} className='object-contain ' />
-      </div>
+    <button onClick={handleFavorite}>
+      {favoritoSeleccionado ? 'quitar de' : 'añadir a'} favoritos
+    </button>
+  )
+}
 
+const PersonajeItemImage = ({ image, name }: PersonajeItemImageProps) => {
+  return (
+    <div className='w-full h-[250px] overflow-hidden flex items-center justify-center '>
+      <img src={image} alt={name} className='object-contain ' />
+    </div>
+  )
+}
+
+const PersonajeItemInfo = ({
+  name,
+  gender,
+  species,
+  origin,
+  location,
+  episode,
+}: PersonajeItemInfoProps) => {
+  return (
+    <div className='flex flex-col gap-2'>
+      {' '}
       {/* info */}
       <span className='uppercase text-xl font-bold'>{name}</span>
       {/* TODO: url como params para páginas de personajes */}
       {/* <span className='uppercase text-xl font-bold'>{url}</span> */}
       <span>Gender: {gender}</span>
       <span>Species: {species}</span>
-      <span>Status: {status}</span>
       <span>Origin: {origin.name}</span>
       <span>Location: {location.name}</span>
       <span>
         Aparece en {episode.length}{' '}
         {episode.length === 1 ? 'episodio' : 'episodios'}
       </span>
-
-      <button onClick={handleFavorite}>
-        {favoritoSeleccionado ? 'quitar de' : 'añadir a'} favoritos
-      </button>
     </div>
   )
 }
+
+const PersonajeItemStatus = ({ status }: PersonajeItemStatusProps) => {
+  console.log(typeof status)
+  return (
+    <span
+      className={`text-[white] font-bold px-4 py-[.4rem] rounded-[13px] capitalize personaje-status-${status}`}
+    >
+      {status}
+    </span>
+  )
+}
+
+PersonajeItem.Button = PersonajeButton
+PersonajeItem.Image = PersonajeItemImage
+PersonajeItem.Info = PersonajeItemInfo
+PersonajeItem.Status = PersonajeItemStatus
 
 export default PersonajeItem

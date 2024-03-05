@@ -36,14 +36,14 @@ button:hover {
 
 /* personajes */
 
-.personaje-Alive {
-  color: black;
+.personaje-status-Alive {
+  background-color: black;
 }
 
-.personaje-Dead {
-  color: crimson;
+.personaje-status-Dead {
+  background-color: crimson;
 }
 
-.personaje-unknown {
-  color: grey;
+.personaje-status-unknown {
+  background-color: grey;
 }
