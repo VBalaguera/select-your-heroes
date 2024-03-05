@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { PersonajeItemProps } from '../../types/personajes'
 import PersonajeItemParent from '../personajes/PersonajeItem'
 
-export default function FavoritosList() {
+export default function FavoritosLista() {
   const [listaFavoritos, setListaFavoritos] = useState<PersonajeItemProps[]>([])
 
   useEffect(() => {
@@ -11,7 +11,7 @@ export default function FavoritosList() {
   }, [])
   console.log(listaFavoritos)
   return (
-    <div className='flex flex-col gap-2'>
+    <div className='flex flex-wrap gap-2'>
       {listaFavoritos.map((item) => (
         <PersonajeItemParent key={item.id}>
           <PersonajeItemParent.Image {...item} />
