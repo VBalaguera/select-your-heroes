@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import PageTitle from '../components/ui/PageTitle'
+import FavoritosList from '../features/favoritos/FavoritosList'
 
 export const Route = createFileRoute('/favoritos')({
   component: Favoritos,
@@ -7,8 +8,9 @@ export const Route = createFileRoute('/favoritos')({
 
 export default function Favoritos() {
   return (
-    <div>
+    <div className='flex flex-col gap-2'>
       <PageTitle text='Favoritos' />
+      <FavoritosList />
     </div>
   )
 }

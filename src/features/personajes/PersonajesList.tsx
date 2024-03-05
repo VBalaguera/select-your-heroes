@@ -1,5 +1,6 @@
 import useCharacters from '../../services/useCharacters'
-import CharacterItem, { PersonajeItemProps } from './PersonajeItem'
+import { PersonajeItemProps } from '../../interfaces/personajes'
+import CharacterItem from './PersonajeItem'
 
 export default function PersonajesList() {
   const { data, isLoading, error } = useCharacters()

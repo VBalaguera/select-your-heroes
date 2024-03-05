@@ -3,5 +3,5 @@ type PageTitleProps = {
 }
 
 export default function PageTitle({ text }: PageTitleProps) {
-  return <h1 className='font-bold'>{text}</h1>
+  return <h1 className='font-bold mb-2'>{text}</h1>
 }
