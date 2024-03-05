@@ -101,7 +101,7 @@ const PersonajeItemImage = ({ image, name, id }: PersonajeItemImageProps) => {
       to='/personajes/$id'
       params={(prev) => ({ ...prev, id: id.toString() })}
     >
-      <div className='w-full h-[300px] overflow-hidden flex items-center justify-center '>
+      <div className='w-full h-[300px] overflow-hidden flex items-center justify-center hover:brightness-75 hover:[transition:all_.3s_ease-in-out] [transition:all_.3s_ease-in-out]'>
         <img className='object-contain' src={image} alt={name} />
       </div>
     </Link>
