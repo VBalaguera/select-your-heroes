@@ -74,7 +74,7 @@ const PersonajeItemInfo = ({
   )
 }
 
-const PersonajeItenBoton = ({
+const PersonajeItemBoton = ({
   esFavorito,
   item,
   borrarFavorito,
@@ -116,6 +116,6 @@ const PersonajeItemStatus = ({ status }: PersonajeItemStatusProps) => {
 PersonajeItem.Image = PersonajeItemImage
 PersonajeItem.Info = PersonajeItemInfo
 PersonajeItem.Status = PersonajeItemStatus
-PersonajeItem.Boton = PersonajeItenBoton
+PersonajeItem.Boton = PersonajeItemBoton
 
 export default PersonajeItem

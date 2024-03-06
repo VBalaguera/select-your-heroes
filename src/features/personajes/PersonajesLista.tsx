@@ -74,16 +74,16 @@ export default function PersonajesLista({ data }: PersonajesListaProps) {
     <div className='flex flex-wrap gap-2 items-center justify-center'>
       {data.map((item: PersonajeItemProps) => (
         <div
-          className='flex flex-col gap-2 
+          className='flex flex-col gap-2 p-4 border-[1px] border-[solid] border-[black] rounded-[14px]
 '
           key={item.id}
         >
-          <PersonajeFicha
-            item={item}
+          <PersonajeFicha {...item} />
+          <PersonajeInteracciones
             esFavorito={comprobarFavoritoExiste(listaFavoritos, item.id)}
+            item={item}
             borrarFavorito={borrarFavorito}
             handleAñadirFavorito={handleAñadirFavorito}
-            hasButton={true}
           />
         </div>
       ))}

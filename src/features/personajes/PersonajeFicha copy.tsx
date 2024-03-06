@@ -1,5 +1,5 @@
 import { PersonajeItemProps } from '../../types/personajes'
-import PersonajeInteracciones from './PersonajeInteracciones'
+// import PersonajeInteracciones from './PersonajeInteracciones'
 import PersonajeItemParent from './PersonajeItem'
 
 export default function PersonajeFicha({
