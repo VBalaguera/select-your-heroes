@@ -16,7 +16,6 @@ import PersonajeInteracciones from './PersonajeInteracciones'
 import { useFavoritosStore } from '../../store/store'
 
 export default function PersonajesLista({ data }: PersonajesListaProps) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [listaFavoritos, setListaFavoritos] = useState<
     PersonajeItemProps[] | []
   >(useFavoritosStore((state) => state.favoritos))
@@ -47,14 +46,12 @@ export default function PersonajesLista({ data }: PersonajesListaProps) {
 
     añadiFavoritoZustand(nuevoFavorito)
 
-    // setListaFavoritos([...listaFavoritos, nuevoFavorito])
     localStorageSetItem('favoritos', [...favoritos, nuevoFavorito])
-    // console.log('añadirFavorito listaFavoritos', listaFavoritos)
   }
 
   const borrarFavorito = (item: PersonajeItemProps) => {
     // ya es favorito?
-    const favoritosFiltrados = filtrarFavoritoExistente(favoritos, item)
+    const favoritosFiltrados = filtrarFavoritoExistente(listaFavoritos, item)
     borrarFavoritoZustand(item.id)
     setListaFavoritos(favoritosFiltrados)
     localStorage.setItem('favoritos', JSON.stringify(favoritosFiltrados))
