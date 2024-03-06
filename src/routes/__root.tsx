@@ -1,5 +1,5 @@
 import { createRootRoute, Outlet } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/router-devtools'
+// import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import AppLayout from '../components/ui/AppLayout'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -21,7 +21,7 @@ export const Route = createRootRoute({
         <AppLayout>
           <Outlet />
         </AppLayout>
-        <TanStackRouterDevtools />
+        {/* <TanStackRouterDevtools /> */}
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>

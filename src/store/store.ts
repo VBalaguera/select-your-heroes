@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { PersonajeItemProps } from '../types/personajes'
-import { localStorageGetItem } from '../utils/localStorage'
+import { localStorageGetItem } from '../helpers/localStorage'
 
 // store
 interface ListaFavoritosStore {

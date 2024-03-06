@@ -5,10 +5,6 @@ import { useNavigate } from '@tanstack/react-router'
 import Cargando from '../../components/ui/Cargando'
 
 export const Route = createFileRoute('/personajes/$id')({
-  loader: async ({ params }) => {
-    console.log(params.id)
-  },
-
   component: PersonajesId,
 })
 

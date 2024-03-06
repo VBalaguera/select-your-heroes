@@ -25,8 +25,6 @@ export default function FavoritosContenido() {
     pagina * favoritosPorPagina
   )
 
-  console.log(typeof favoritos.length)
-
   return (
     <div className='flex flex-wrap flex-col gap-2 items-center justify-center'>
       {/* contador de favoritos */}

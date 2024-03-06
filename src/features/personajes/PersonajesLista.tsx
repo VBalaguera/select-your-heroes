@@ -7,7 +7,7 @@ import PersonajeFicha from './PersonajeFicha'
 import {
   localStorageGetItem,
   localStorageSetItem,
-} from '../../utils/localStorage'
+} from '../../helpers/localStorage'
 import {
   comprobarFavoritoExiste,
   filtrarFavoritoExistente,

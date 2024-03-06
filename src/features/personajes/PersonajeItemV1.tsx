@@ -77,7 +77,6 @@ const PersonajeButton = ({
 
     // si no está en el listado, añadir
     if (!favoritoExiste) {
-      console.log(listaFavoritos)
       const favoritosActualizado = [...listaFavoritos, personajeSeleccionado]
 
       localStorage.setItem('favoritos', JSON.stringify(favoritosActualizado))

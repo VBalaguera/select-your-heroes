@@ -1,3 +1,9 @@
 export default function Footer() {
-  return <div>Footer</div>
+  const fecha = new Date()
+  const año = fecha.getFullYear()
+  return (
+    <div className='flex justify-start font-bold'>
+      &copy; {año} Víctor Balaguera
+    </div>
+  )
 }
