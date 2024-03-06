@@ -4,58 +4,41 @@ import {
   PersonajesListaProps,
 } from '../../types/personajes'
 import PersonajeFicha from './PersonajeFicha'
-import {
-  localStorageGetItem,
-  localStorageSetItem,
-} from '../../utils/localStorage'
+import { getItem, setItem } from '../../utils/localStorage'
 import {
   comprobarFavoritoExiste,
   filtrarFavoritoExistente,
 } from '../../helpers/utils'
 import PersonajeInteracciones from './PersonajeInteracciones'
-import { useFavoritosStore } from '../../store/store'
 
 export default function PersonajesLista({ data }: PersonajesListaProps) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [listaFavoritos, setListaFavoritos] = useState<
     PersonajeItemProps[] | []
-  >(useFavoritosStore((state) => state.favoritos))
-
-  // zustand
-  const añadiFavoritoZustand = useFavoritosStore(
-    (state) => state.añadirFavorito
-  )
-  const borrarFavoritoZustand = useFavoritosStore(
-    (state) => state.borrarFavorito
-  )
+  >([])
 
   // carga favoritos de localStorage al montarse
 
-  const favoritos = useFavoritosStore((state) => state.favoritos)
-
   useEffect(() => {
-    const favoritos = localStorageGetItem('favoritos')
-    localStorageSetItem('favoritos', favoritos)
+    const favoritos = getItem('favoritos')
+    setItem('favoritos', favoritos)
+    console.log(getItem('favoritos'))
     setListaFavoritos(favoritos)
   }, [])
 
   const añadirFavorito = (nuevoFavorito: PersonajeItemProps) => {
     // ya es favorito?
-    const esFavorito = comprobarFavoritoExiste(favoritos, nuevoFavorito.id)
+    const esFavorito = comprobarFavoritoExiste(listaFavoritos, nuevoFavorito.id)
 
     if (esFavorito) return
 
-    añadiFavoritoZustand(nuevoFavorito)
-
-    // setListaFavoritos([...listaFavoritos, nuevoFavorito])
-    localStorageSetItem('favoritos', [...favoritos, nuevoFavorito])
-    // console.log('añadirFavorito listaFavoritos', listaFavoritos)
+    setListaFavoritos([...listaFavoritos, nuevoFavorito])
+    setItem('favoritos', [...listaFavoritos, nuevoFavorito])
+    console.log('añadirFavorito listaFavoritos', listaFavoritos)
   }
 
   const borrarFavorito = (item: PersonajeItemProps) => {
     // ya es favorito?
-    const favoritosFiltrados = filtrarFavoritoExistente(favoritos, item)
-    borrarFavoritoZustand(item.id)
+    const favoritosFiltrados = filtrarFavoritoExistente(listaFavoritos, item)
     setListaFavoritos(favoritosFiltrados)
     localStorage.setItem('favoritos', JSON.stringify(favoritosFiltrados))
   }
@@ -90,14 +73,11 @@ export default function PersonajesLista({ data }: PersonajesListaProps) {
 
   return (
     <div className='flex flex-wrap gap-2 items-center justify-center'>
-      {/* {favoritos.map((item) => (
-        <span>{item.id}</span>
-      ))} */}
       {data.map((item: PersonajeItemProps) => (
         <div className='flex flex-col gap-2 p-4 ' key={item.id}>
           <PersonajeFicha {...item} />
           <PersonajeInteracciones
-            esFavorito={comprobarFavoritoExiste(favoritos, item.id)}
+            esFavorito={comprobarFavoritoExiste(listaFavoritos, item.id)}
             item={item}
             borrarFavorito={borrarFavorito}
             handleAñadirFavorito={handleAñadirFavorito}

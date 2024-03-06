@@ -51,7 +51,7 @@ const PersonajeItemInfo = ({
 }: PersonajeItemInfoProps) => {
   return (
     <div className='flex flex-col gap-2 w-full items-center justify-center'>
-      {/* info */}
+      {/* nombre y link a su ficha */}
 
       <Link
         to='/personajes/$id'
@@ -60,8 +60,8 @@ const PersonajeItemInfo = ({
       >
         <span className='uppercase text-xl font-bold'>{name}</span>
       </Link>
-      {/* TODO: url como params para páginas de personajes */}
-      {/* <span className='uppercase text-xl font-bold'>{url}</span> */}
+
+      {/* info */}
       <span>Gender: {gender}.</span>
       <span>Species: {species}.</span>
       <span>Origin: {origin.name}.</span>
@@ -74,6 +74,7 @@ const PersonajeItemInfo = ({
   )
 }
 
+// TODO: mantener este comp?
 const PersonajeItemBoton = ({
   esFavorito,
   item,

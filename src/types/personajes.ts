@@ -25,6 +25,13 @@ export interface PersonajeFichaProps {
   hasButton?: boolean
 }
 
+export interface PersonajeInteraccionesProps {
+  esFavorito: boolean
+  item: PersonajeItemProps
+  borrarFavorito: (item: PersonajeItemProps) => void
+  handleAñadirFavorito: (item: PersonajeItemProps) => void
+}
+
 export type PersonajesListaProps = {
   data: PersonajeItemProps[]
 }

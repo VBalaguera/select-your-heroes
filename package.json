@@ -17,7 +17,8 @@
     "axios": "^1.6.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "usehooks-ts": "^2.15.1"
+    "usehooks-ts": "^2.15.1",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@tanstack/router-vite-plugin": "^1.18.1",

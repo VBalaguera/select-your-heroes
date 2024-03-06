@@ -11,7 +11,7 @@ export default function FavoritosLista({
       <div className='flex flex-wrap gap-2 items-center justify-center'>
         {favoritos.map((item: PersonajeItemProps) => (
           <div
-            className='flex flex-col gap-2 p-4 border-[1px] border-[solid] border-[black] rounded-[14px]
+            className='flex flex-col gap-2 p-4 
 '
             key={item.id}
           >
