@@ -16,8 +16,8 @@ export default function PersonajesLista({ data }: PersonajesListaProps) {
     PersonajeItemProps[] | []
   >([])
 
-  // carga favoritos de localStorage
-  // al montarse
+  // carga favoritos de localStorage al montarse
+
   useEffect(() => {
     const favoritos = getItem('favoritos')
     setItem('favoritos', favoritos)
@@ -26,7 +26,7 @@ export default function PersonajesLista({ data }: PersonajesListaProps) {
   }, [])
 
   const añadirFavorito = (nuevoFavorito: PersonajeItemProps) => {
-    // es favorito?
+    // ya es favorito?
     const esFavorito = comprobarFavoritoExiste(listaFavoritos, nuevoFavorito.id)
 
     if (esFavorito) return
@@ -37,6 +37,7 @@ export default function PersonajesLista({ data }: PersonajesListaProps) {
   }
 
   const borrarFavorito = (item: PersonajeItemProps) => {
+    // ya es favorito?
     const favoritosFiltrados = filtrarFavoritoExistente(listaFavoritos, item)
     setListaFavoritos(favoritosFiltrados)
     localStorage.setItem('favoritos', JSON.stringify(favoritosFiltrados))
@@ -74,8 +75,7 @@ export default function PersonajesLista({ data }: PersonajesListaProps) {
     <div className='flex flex-wrap gap-2 items-center justify-center'>
       {data.map((item: PersonajeItemProps) => (
         <div
-          className='flex flex-col gap-2 p-4 border-[1px] border-[solid] border-[black] rounded-[14px]
-'
+          className='flex flex-col gap-2 p-4 border-[1px] border-[solid] border-[black] rounded-[14px]'
           key={item.id}
         >
           <PersonajeFicha {...item} />

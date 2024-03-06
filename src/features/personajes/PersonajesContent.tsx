@@ -3,16 +3,21 @@ import useCharacters from '../../services/usePersonajes'
 import Cargando from '../../components/ui/Cargando'
 
 import PersonajesLista from './PersonajesLista'
+import Paginacion from '../../components/ui/Paginacion'
 
 export default function PersonajesContent() {
   // página inicial
-  const [page, setPage] = useState<number>(1)
-  const { data, isLoading, error, isFetching } = useCharacters(page)
+  const [pagina, setPagina] = useState<number>(1)
+
+  // query
+  const { data, isLoading, error, isFetching } = useCharacters(pagina)
 
   // obtiene el nº de página en el que hemos estado
   useEffect(() => {
-    const currPage = JSON.parse(localStorage.getItem('página') || '1')
-    setPage(currPage)
+    const currPagina = JSON.parse(
+      localStorage.getItem('página-personajes') || '1'
+    )
+    setPagina(currPagina)
   }, [])
 
   if (isLoading) return <Cargando />
@@ -21,32 +26,38 @@ export default function PersonajesContent() {
   return (
     <div className='flex flex-col gap-2'>
       {/* paginación  */}
-      <div className='w-full flex flex-col gap-2 items-center justify-center'>
+      <Paginacion
+        pagina={pagina}
+        setPagina={setPagina}
+        numPaginas={data.info.pages}
+        nombrePagina={'personajes'}
+      />
+      {/* <div className='w-full flex flex-col gap-2 items-center justify-center'>
         {' '}
         <span>
-          Página {page} de {data.info.pages}
+          Página {pagina} de {data.info.pages}
         </span>
         <div className='flex gap-2'>
           <button
             onClick={() => {
-              setPage((old) => Math.max(old - 1, 0))
-              localStorage.setItem('página', (page - 1).toString())
+              setPagina((old) => Math.max(old - 1, 0))
+              localStorage.setItem('página', (pagina - 1).toString())
             }}
-            disabled={page <= 1}
+            disabled={pagina <= 1}
           >
             Anterior
           </button>
           <button
             onClick={() => {
-              setPage(page + 1)
-              localStorage.setItem('página', (page + 1).toString())
+              setPagina(pagina + 1)
+              localStorage.setItem('página', (pagina + 1).toString())
             }}
-            disabled={page >= data.info.pages}
+            disabled={pagina >= data.info.paginas}
           >
             Siguiente
           </button>
         </div>
-      </div>
+      </div> */}
 
       {/* datos */}
       {!isFetching && <PersonajesLista data={data.results} />}
