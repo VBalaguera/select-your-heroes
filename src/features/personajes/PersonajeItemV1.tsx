@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   PersonajeItemImageProps,
   PersonajeItemInfoProps,
@@ -6,14 +6,17 @@ import {
   PersonajeItemProps,
   PersonajeItemStatusProps,
 } from '../../types/personajes'
-
+import {
+  comprobarFavoritoExiste,
+  filtrarFavoritoExistente,
+} from '../../helpers/utils'
 import { Link } from '@tanstack/react-router'
 
 // Container para resto de elementos
 const PersonajeItem = ({ children }: PersonajeItemParentProps) => {
   return (
     <div
-      className={`flex flex-col items-center justify-between gap-2 w-full h-auto  sm:w-[400px]`}
+      className={`flex flex-col items-center justify-between gap-2 w-full h-auto  sm:w-[400px] border-[1px] border-[solid] border-[black] rounded-[14px] personaje-${status} p-4`}
     >
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {
@@ -22,6 +25,80 @@ const PersonajeItem = ({ children }: PersonajeItemParentProps) => {
         return child
       })}
     </div>
+  )
+}
+
+// botón
+const PersonajeButton = ({
+  id,
+  image,
+  name,
+  gender,
+  species,
+  status,
+  origin,
+  episode,
+  location,
+  url,
+}: PersonajeItemProps) => {
+  const [listaFavoritos, setListaFavoritos] = useState<PersonajeItemProps[]>([])
+
+  useEffect(() => {
+    const favoritos: PersonajeItemProps[] = JSON.parse(
+      localStorage.getItem('favoritos') || '[]'
+    )
+    setListaFavoritos(favoritos)
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('favoritos', JSON.stringify(listaFavoritos))
+  }, [listaFavoritos])
+
+  // existe item en favoritos?
+  const favoritoSeleccionado = comprobarFavoritoExiste(listaFavoritos, id)
+
+  const handleFavorite = () => {
+    const personajeSeleccionado = {
+      id,
+      image,
+      name,
+      gender,
+      species,
+      status,
+      origin,
+      episode,
+      location,
+      url,
+    }
+    const favoritoExiste = comprobarFavoritoExiste(
+      listaFavoritos,
+      personajeSeleccionado
+    )
+
+    // si no está en el listado, añadir
+    if (!favoritoExiste) {
+      console.log(listaFavoritos)
+      const favoritosActualizado = [...listaFavoritos, personajeSeleccionado]
+
+      localStorage.setItem('favoritos', JSON.stringify(favoritosActualizado))
+      setListaFavoritos((prevFavoritos) => [
+        ...prevFavoritos,
+        personajeSeleccionado,
+      ])
+      return
+    }
+    // si está en el listado, eliminar
+    const favoritosFiltrados = filtrarFavoritoExistente(
+      listaFavoritos,
+      personajeSeleccionado
+    )
+    setListaFavoritos(favoritosFiltrados)
+    localStorage.setItem('favoritos', JSON.stringify(favoritosFiltrados))
+  }
+  return (
+    <button onClick={handleFavorite}>
+      {favoritoSeleccionado ? 'quitar de' : 'añadir a'} favoritos
+    </button>
   )
 }
 
@@ -74,33 +151,6 @@ const PersonajeItemInfo = ({
   )
 }
 
-const PersonajeItenBoton = ({
-  esFavorito,
-  item,
-  borrarFavorito,
-  handleAñadirFavorito,
-}: {
-  esFavorito: boolean | undefined
-  item: PersonajeItemProps
-  borrarFavorito: (item: PersonajeItemProps) => void | undefined
-  handleAñadirFavorito: (item: PersonajeItemProps) => void | undefined
-}) => {
-  return (
-    <div className='flex gap-2 w-full'>
-      {' '}
-      {esFavorito ? (
-        <button className='w-full' onClick={() => borrarFavorito(item)}>
-          Borrar favorito.
-        </button>
-      ) : (
-        <button className='w-full' onClick={() => handleAñadirFavorito(item)}>
-          Añadir favorito.
-        </button>
-      )}
-    </div>
-  )
-}
-
 // status
 const PersonajeItemStatus = ({ status }: PersonajeItemStatusProps) => {
   return (
@@ -112,9 +162,9 @@ const PersonajeItemStatus = ({ status }: PersonajeItemStatusProps) => {
   )
 }
 
+PersonajeItem.Button = PersonajeButton
 PersonajeItem.Image = PersonajeItemImage
 PersonajeItem.Info = PersonajeItemInfo
 PersonajeItem.Status = PersonajeItemStatus
-PersonajeItem.Boton = PersonajeItenBoton
 
 export default PersonajeItem

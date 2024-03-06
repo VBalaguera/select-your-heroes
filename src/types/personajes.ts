@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-export interface PersonajeItemProps {
+export type PersonajeItemProps = {
   id: number
   image: string
   name: string
@@ -17,7 +17,19 @@ export interface PersonajeItemProps {
   url: string
 }
 
-export interface PersonajeItemParentProps {
+export interface PersonajeFichaProps {
+  item: PersonajeItemProps
+  esFavorito: boolean | undefined
+  handleAñadirFavorito: (item: PersonajeItemProps) => void | undefined
+  borrarFavorito: (item: PersonajeItemProps) => void | undefined
+  hasButton?: boolean
+}
+
+export type PersonajesListaProps = {
+  data: PersonajeItemProps[]
+}
+
+export type PersonajeItemParentProps = {
   children: ReactNode
 }
 
