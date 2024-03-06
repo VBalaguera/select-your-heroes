@@ -8,7 +8,7 @@ export const Route = createLazyFileRoute('/')({
 
 function Index() {
   return (
-    <div>
+    <div className='flex flex-col gap-2 w-full '>
       <PageTitle text='Personajes' />
       <PersonajesContent />
     </div>

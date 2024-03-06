@@ -16,7 +16,7 @@ import { Link } from '@tanstack/react-router'
 const PersonajeItem = ({ children }: PersonajeItemParentProps) => {
   return (
     <div
-      className={`flex flex-col items-center justify-between gap-2 w-[300px] h-auto sm:w-[400px] border-[1px] border-[solid] border-[black] rounded-[14px] personaje-${status} p-4`}
+      className={`flex flex-col items-center justify-between gap-2 w-full h-auto  sm:w-[400px] border-[1px] border-[solid] border-[black] rounded-[14px] personaje-${status} p-4`}
     >
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {

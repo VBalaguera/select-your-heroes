@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import usePersonajesPorId from '../../services/usePersonajesPorId'
 import PersonajeFicha from '../../features/personajes/PersonajeFicha'
 import { useNavigate } from '@tanstack/react-router'
+import Cargando from '../../components/ui/Cargando'
 
 export const Route = createFileRoute('/personajes/$id')({
   loader: async ({ params }) => {
@@ -14,11 +15,10 @@ export const Route = createFileRoute('/personajes/$id')({
 export default function PersonajesId() {
   const navigate = useNavigate()
   const { id } = Route.useParams()
-  console.log(Number(id))
 
   const { data, isLoading, error } = usePersonajesPorId(Number(id))
 
-  if (isLoading) return <span>loading</span>
+  if (isLoading) return <Cargando />
   if (error) return <span>{error.message}</span>
 
   return (

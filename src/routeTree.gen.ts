@@ -14,7 +14,6 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as FavoritosImport } from './routes/favoritos'
-import { Route as LayoutImport } from './routes/_layout'
 import { Route as PersonajesIdImport } from './routes/personajes/$id'
 
 // Create Virtual Routes
@@ -25,11 +24,6 @@ const IndexLazyImport = createFileRoute('/')()
 
 const FavoritosRoute = FavoritosImport.update({
   path: '/favoritos',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const LayoutRoute = LayoutImport.update({
-  id: '/_layout',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -51,10 +45,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/_layout': {
-      preLoaderRoute: typeof LayoutImport
-      parentRoute: typeof rootRoute
-    }
     '/favoritos': {
       preLoaderRoute: typeof FavoritosImport
       parentRoute: typeof rootRoute
@@ -70,7 +60,6 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexLazyRoute,
-  LayoutRoute,
   FavoritosRoute,
   PersonajesIdRoute,
 ])
