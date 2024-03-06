@@ -6,6 +6,7 @@ export default function PersonajeInteracciones({
   borrarFavorito,
   handleAñadirFavorito,
 }: {
+  // TODO: refactor this
   esFavorito: boolean
   item: PersonajeItemProps
   borrarFavorito: (item: PersonajeItemProps) => void

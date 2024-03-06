@@ -8,7 +8,14 @@ export default function PersonajeFicha({
   handleAñadirFavorito,
   borrarFavorito,
   hasButton = false,
-}: PersonajeFichaProps) {
+}: {
+  // TODO:  refactor this
+  item: PersonajeItemProps
+  esFavorito: boolean
+  handleAñadirFavorito: (item: PersonajeItemProps) => void
+  borrarFavorito: (item: PersonajeItemProps) => void
+  hasButton: boolean
+}) {
   return (
     <div className='flex flex-col gap-2 p-4 border-[1px] border-[solid] border-[black] rounded-[14px]'>
       <PersonajeItemParent key={item.id}>
@@ -24,12 +31,12 @@ export default function PersonajeFicha({
             handleAñadirFavorito={handleAñadirFavorito}
           />
         )}
-        {/* <PersonajeInteracciones
+        <PersonajeInteracciones
           esFavorito={esFavorito}
           item={item}
           borrarFavorito={borrarFavorito}
           handleAñadirFavorito={handleAñadirFavorito}
-        /> */}
+        />
       </PersonajeItemParent>
     </div>
   )

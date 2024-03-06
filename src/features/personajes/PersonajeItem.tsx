@@ -80,10 +80,11 @@ const PersonajeItenBoton = ({
   borrarFavorito,
   handleAñadirFavorito,
 }: {
-  esFavorito: boolean | undefined
+  // TODO: refactor this
+  esFavorito: boolean
   item: PersonajeItemProps
-  borrarFavorito: (item: PersonajeItemProps) => void | undefined
-  handleAñadirFavorito: (item: PersonajeItemProps) => void | undefined
+  borrarFavorito: (item: PersonajeItemProps) => void
+  handleAñadirFavorito: (item: PersonajeItemProps) => void
 }) => {
   return (
     <div className='flex gap-2 w-full'>

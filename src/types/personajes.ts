@@ -19,9 +19,9 @@ export type PersonajeItemProps = {
 
 export interface PersonajeFichaProps {
   item: PersonajeItemProps
-  esFavorito: boolean | undefined
-  handleAñadirFavorito: (item: PersonajeItemProps) => void | undefined
-  borrarFavorito: (item: PersonajeItemProps) => void | undefined
+  esFavorito?: boolean | undefined
+  handleAñadirFavorito?: (item: PersonajeItemProps) => void | undefined
+  borrarFavorito?: (item: PersonajeItemProps) => void | undefined
   hasButton?: boolean
 }
 
