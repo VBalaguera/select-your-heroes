@@ -6,19 +6,20 @@ import Cargando from '../../components/ui/Cargando'
 
 import PersonajesLista from './PersonajesLista'
 import Paginacion from '../../components/ui/Paginacion'
-import { usePaginacionStore } from '../../store/store'
+import Error from '../../components/ui/Error'
 
-export default function PersonajesContent() {
+export default function PersonajesContenido() {
   // página inicial
-  const [pagina, setPagina] = useState<number>(
-    usePaginacionStore((state) => state.paginaPersonajes)
-  )
+  const [pagina, setPagina] = useState<number>(() => {
+    const numPagina = localStorage.getItem('página-personajes')
+    return numPagina ? Number(numPagina) : 1
+  })
 
   // query
   const { data, isLoading, error, isPlaceholderData } = useCharacters(pagina)
 
   if (isLoading) return <Cargando />
-  if (error) return <span>{error.message}</span>
+  if (error) return <Error text={error.message} />
 
   return (
     <div className='flex flex-col gap-2'>

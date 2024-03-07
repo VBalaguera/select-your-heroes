@@ -9,7 +9,7 @@ Versión subida a Vercel [aquí](https://select-your-heroes.vercel.app/).
 El proyecto ejecuta las siguientes funciones:
 
 1. Obtener información de una API específica (para la realización de este proyecto ha sido [Rick and Morty API](https://rickandmortyapi.com/documentation)).
-2. Desplegaar el contenido en la página principal.
+2. Desplegar el contenido en la página principal.
    1. Cada uno de los ítems desplegados permite añadirlo a un listado de favoritos.
    2. Cada uno de los ítems desplegados tiene una página individual.
 3. Visualizar el listado de favoritos.
@@ -29,8 +29,8 @@ El proyecto ejecuta las siguientes funciones:
 
 ```
 /
-/favoritos
-/personajes/:id
+    /favoritos
+    /personajes/:id
 ```
 
 ## Estructura de archivos del proyecto
@@ -51,7 +51,7 @@ app/
 
 ```
 
-## scrips disponibles
+## Scrips disponibles
 
 En la app, los siguientes scripts están disponibles:
 

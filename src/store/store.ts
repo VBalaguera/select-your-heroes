@@ -11,12 +11,6 @@ interface ListaFavoritosStore {
   borrarFavorito: (id: number) => void
 }
 
-// interface paginación
-interface PaginacionStore {
-  paginaPersonajes: number
-  paginaFavoritos: number
-}
-
 // store favoritos
 export const useFavoritosStore = create<ListaFavoritosStore>((set) => ({
   favoritos: localStorageGetItem('favoritos') || [],
@@ -26,12 +20,4 @@ export const useFavoritosStore = create<ListaFavoritosStore>((set) => ({
     set((state) => ({
       favoritos: state.favoritos.filter((favorito) => favorito.id !== id),
     })),
-}))
-
-//
-
-// store paginación
-export const usePaginacionStore = create<PaginacionStore>(() => ({
-  paginaFavoritos: Number(localStorage.getItem('página-favoritos')) || 1,
-  paginaPersonajes: Number(localStorage.getItem('página-personajes')) || 1,
 }))

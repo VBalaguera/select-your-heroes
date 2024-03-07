@@ -5,14 +5,15 @@
 import { useState } from 'react'
 import FavoritosLista from './FavoritosLista'
 import Paginacion from '../../components/ui/Paginacion'
-import { useFavoritosStore, usePaginacionStore } from '../../store/store'
+import { useFavoritosStore } from '../../store/store'
 import FavoritosContador from './FavoritosContador'
 
 export default function FavoritosContenido() {
   // página inicial
-  const [pagina, setPagina] = useState<number>(
-    usePaginacionStore((state) => state.paginaFavoritos)
-  )
+  const [pagina, setPagina] = useState<number>(() => {
+    const numPagina = localStorage.getItem('página-favoritos')
+    return numPagina ? Number(numPagina) : 1
+  })
 
   // num favs por página
   const favoritosPorPagina = 5
