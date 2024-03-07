@@ -1,3 +1,5 @@
+// router /favoritos
+
 import { createFileRoute } from '@tanstack/react-router'
 import PageTitle from '../components/ui/PageTitle'
 import FavoritosContenido from '../features/favoritos/FavoritosContenido'

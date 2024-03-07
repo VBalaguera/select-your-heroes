@@ -1,3 +1,6 @@
+// muestra nº de favoritos
+// despliega contenido según nº
+
 import { Link } from '@tanstack/react-router'
 
 export default function FavoritosContador({

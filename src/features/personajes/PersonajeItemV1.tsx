@@ -9,7 +9,7 @@ import {
 import {
   comprobarFavoritoExiste,
   filtrarFavoritoExistente,
-} from '../../helpers/utils'
+} from '../../utils/favoritos'
 import { Link } from '@tanstack/react-router'
 
 // Container para resto de elementos

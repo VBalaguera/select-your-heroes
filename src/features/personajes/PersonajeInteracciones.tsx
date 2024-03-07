@@ -1,3 +1,5 @@
+// interacciones (añadir, borrar) de personajes
+
 import { PersonajeInteraccionesProps } from '../../types/personajes'
 
 export default function PersonajeInteracciones({

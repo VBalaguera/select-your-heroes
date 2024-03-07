@@ -1,6 +1,3 @@
-// listado de personajes
-// incl métodos para añadir/borrar personajes
-
 import { useEffect, useState } from 'react'
 import {
   PersonajeItemProps,
@@ -55,14 +52,44 @@ export default function PersonajesLista({ data }: PersonajesListaProps) {
   const borrarFavorito = (item: PersonajeItemProps) => {
     // ya es favorito?
     const favoritosFiltrados = filtrarFavoritoExistente(listaFavoritos, item)
-
     borrarFavoritoZustand(item.id)
     setListaFavoritos(favoritosFiltrados)
     localStorage.setItem('favoritos', JSON.stringify(favoritosFiltrados))
   }
 
+  const handleAñadirFavorito = (item: PersonajeItemProps) => {
+    const {
+      id,
+      image,
+      name,
+      gender,
+      species,
+      status,
+      origin,
+      episode,
+      location,
+      url,
+    } = item
+    const nuevoFavorito: PersonajeItemProps = {
+      id,
+      image,
+      name,
+      gender,
+      species,
+      status,
+      origin,
+      episode,
+      location,
+      url,
+    }
+    añadirFavorito(nuevoFavorito)
+  }
+
   return (
     <div className='flex flex-wrap gap-2 items-center justify-center'>
+      {/* {favoritos.map((item) => (
+        <span>{item.id}</span>
+      ))} */}
       {data.map((item: PersonajeItemProps) => (
         <div className='flex flex-col gap-2 p-4 ' key={item.id}>
           <PersonajeFicha {...item} />
@@ -70,7 +97,7 @@ export default function PersonajesLista({ data }: PersonajesListaProps) {
             esFavorito={comprobarFavoritoExiste(favoritos, item.id)}
             item={item}
             borrarFavorito={borrarFavorito}
-            handleAñadirFavorito={añadirFavorito}
+            handleAñadirFavorito={handleAñadirFavorito}
           />
         </div>
       ))}

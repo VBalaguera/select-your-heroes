@@ -1,5 +1,7 @@
+// ficha individual de personaje
+
 import { PersonajeItemProps } from '../../types/personajes'
-import PersonajeItemParent from './PersonajeItem'
+import PersonajeItemParent from './PersonajeItemParent'
 
 export default function PersonajeFicha(item: PersonajeItemProps) {
   return (

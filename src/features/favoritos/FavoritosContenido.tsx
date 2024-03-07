@@ -1,3 +1,7 @@
+// muestra contador, paginación y lista de favoritos
+// realiza llamada a store para recibir favoritos
+// paginación
+
 import { useState } from 'react'
 import FavoritosLista from './FavoritosLista'
 import Paginacion from '../../components/ui/Paginacion'

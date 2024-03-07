@@ -1,3 +1,5 @@
+// router /
+
 import { createLazyFileRoute } from '@tanstack/react-router'
 import PageTitle from '../components/ui/PageTitle'
 import PersonajesContent from '../features/personajes/PersonajesContent'

@@ -2,20 +2,20 @@ import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 
-// Import the generated route tree
+// importa el árbol de rutas
 import { routeTree } from './routeTree.gen'
 
-// Create a new router instance
+// crea una nueva instancia de router
 const router = createRouter({ routeTree })
 
-// Register the router instance for type safety
+// registro de la instancia del router
 declare module '@tanstack/react-router' {
   interface Register {
     router: typeof router
   }
 }
 
-// Render the app
+// renderiza app
 const rootElement = document.getElementById('root')!
 if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)

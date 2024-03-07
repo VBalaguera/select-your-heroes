@@ -1,3 +1,5 @@
+// título de la página
+
 type PageTitleProps = {
   text: string
 }

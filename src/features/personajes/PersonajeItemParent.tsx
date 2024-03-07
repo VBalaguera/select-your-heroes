@@ -1,3 +1,6 @@
+// despliega info sobre personaje
+// usando compound comp patterns
+
 import React from 'react'
 import {
   PersonajeItemImageProps,
@@ -10,7 +13,7 @@ import {
 import { Link } from '@tanstack/react-router'
 
 // Container para resto de elementos
-const PersonajeItem = ({ children }: PersonajeItemParentProps) => {
+const PersonajeItemParent = ({ children }: PersonajeItemParentProps) => {
   return (
     <div
       className={`flex flex-col items-center justify-between gap-2 w-full h-auto  sm:w-[400px]`}
@@ -114,9 +117,9 @@ const PersonajeItemStatus = ({ status }: PersonajeItemStatusProps) => {
   )
 }
 
-PersonajeItem.Image = PersonajeItemImage
-PersonajeItem.Info = PersonajeItemInfo
-PersonajeItem.Status = PersonajeItemStatus
-PersonajeItem.Boton = PersonajeItemBoton
+PersonajeItemParent.Image = PersonajeItemImage
+PersonajeItemParent.Info = PersonajeItemInfo
+PersonajeItemParent.Status = PersonajeItemStatus
+PersonajeItemParent.Boton = PersonajeItemBoton
 
-export default PersonajeItem
+export default PersonajeItemParent

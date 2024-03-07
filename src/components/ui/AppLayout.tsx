@@ -1,3 +1,5 @@
+// layout
+
 import { createRootRoute } from '@tanstack/react-router'
 import { ReactNode } from 'react'
 import Header from './Header'

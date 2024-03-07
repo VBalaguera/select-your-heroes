@@ -2,7 +2,7 @@
 
 import { create } from 'zustand'
 import { PersonajeItemProps } from '../types/personajes'
-import { localStorageGetItem } from '../helpers/localStorage'
+import { localStorageGetItem } from '../utils/localStorage'
 
 // interface favoritos
 interface ListaFavoritosStore {

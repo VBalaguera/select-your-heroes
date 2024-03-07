@@ -1,3 +1,5 @@
+// router /personajes/$id
+
 import { createFileRoute } from '@tanstack/react-router'
 import usePersonajesPorId from '../../services/usePersonajesPorId'
 import PersonajeFicha from '../../features/personajes/PersonajeFicha'

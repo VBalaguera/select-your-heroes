@@ -4,27 +4,17 @@ import { getPersonajes } from './apiPersonajesAlt'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 
 export default function useCharacters(page: number) {
-  const {
-    isLoading,
-    data,
-    error,
-    isPending,
-    isError,
-    isPlaceholderData,
-    isFetching,
-  } = useQuery({
+  const { isLoading, data, error, isPlaceholderData } = useQuery({
     queryKey: ['personajes', page],
     queryFn: () => getPersonajes(page),
     placeholderData: keepPreviousData,
+    retry: 2,
   })
 
   return {
     isLoading,
     data,
     error,
-    isPending,
-    isFetching,
-    isError,
     isPlaceholderData,
   }
 }

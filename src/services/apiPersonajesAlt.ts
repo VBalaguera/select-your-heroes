@@ -1,11 +1,11 @@
 // llamadas API
 
-const url = 'https://rickandmortyapi.com/api/character/'
+import { apiUrl } from '../utils/api'
 
 // obtiene ítems de personajes por páginas
 export async function getPersonajes(page: number) {
   try {
-    const res = await fetch(`${url}?page=${page}`)
+    const res = await fetch(`${apiUrl}?page=${page}`)
 
     if (!res.ok) {
       throw new Error('Error en la obtención de información')
@@ -22,7 +22,7 @@ export async function getPersonajes(page: number) {
 // obtiene ítem único de personaje por id
 export async function getPersonajesPorId(id: number) {
   try {
-    const res = await fetch(`${url}/${id}`)
+    const res = await fetch(`${apiUrl}/${id}`)
 
     if (!res.ok) {
       throw new Error('Error en la obtención de información')

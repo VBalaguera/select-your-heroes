@@ -1,3 +1,5 @@
+// listado favoritos
+
 import { PersonajeItemProps } from '../../types/personajes'
 import PersonajeFicha from '../personajes/PersonajeFicha'
 
