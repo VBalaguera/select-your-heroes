@@ -9,7 +9,7 @@ import { usePaginacionStore } from '../../store/store'
 export default function PersonajesContent() {
   // página inicial
   const [pagina, setPagina] = useState<number>(
-    usePaginacionStore((state) => state.paginaFavoritos)
+    usePaginacionStore((state) => state.paginaPersonajes)
   )
 
   // query

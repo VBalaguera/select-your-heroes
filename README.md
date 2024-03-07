@@ -4,6 +4,8 @@
 
 Prueba de selección realizada por [Víctor Balaguera](https://www.balaguera.es/) en Marzo de 2024.
 
+Versión subida a Vercel [aquí](https://select-your-heroes.vercel.app/).
+
 El proyecto ejecuta las siguientes funciones:
 
 1. Obtener información de una API específica (para la realización de este proyecto ha sido [Rick and Morty API](https://rickandmortyapi.com/documentation)).

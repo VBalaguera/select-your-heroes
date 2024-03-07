@@ -32,6 +32,6 @@ export const useFavoritosStore = create<ListaFavoritosStore>((set) => ({
 
 // store paginación
 export const usePaginacionStore = create<PaginacionStore>(() => ({
-  paginaFavoritos: 1,
-  paginaPersonajes: 1,
+  paginaFavoritos: Number(localStorage.getItem('página-favoritos')) || 1,
+  paginaPersonajes: Number(localStorage.getItem('página-personajes')) || 1,
 }))
