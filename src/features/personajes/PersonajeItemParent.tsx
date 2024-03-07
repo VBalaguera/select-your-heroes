@@ -3,8 +3,10 @@
 
 import React from 'react'
 import {
+  PersonajeItemImageProps,
+  PersonajeItemInfoProps,
   PersonajeItemParentProps,
-  PersonajeItemProps,
+  PersonajeItemStatusProps,
 } from '../../types/personajes'
 
 import { Link } from '@tanstack/react-router'
@@ -26,15 +28,7 @@ const PersonajeItemParent = ({ children }: PersonajeItemParentProps) => {
 }
 
 // imagen principal
-const PersonajeItemImage = ({
-  image,
-  name,
-  id,
-}: {
-  image: string
-  name: string
-  id: number
-}) => {
+const PersonajeItemImage = ({ image, name, id }: PersonajeItemImageProps) => {
   return (
     <Link
       to='/personajes/$id'
@@ -56,7 +50,7 @@ const PersonajeItemInfo = ({
   origin,
   location,
   episode,
-}: PersonajeItemProps) => {
+}: PersonajeItemInfoProps) => {
   return (
     <div className='flex flex-col gap-2 w-full items-center justify-center'>
       {/* nombre y link a su ficha */}
@@ -83,7 +77,7 @@ const PersonajeItemInfo = ({
 }
 
 // status
-const PersonajeItemStatus = ({ status }: { status: string }) => {
+const PersonajeItemStatus = ({ status }: PersonajeItemStatusProps) => {
   return (
     <span
       className={`text-[white] font-bold px-4 py-[.4rem] rounded-[8px] capitalize personaje-status-${status}`}

@@ -2,11 +2,11 @@ import { ReactNode } from 'react'
 
 export type PersonajeItemProps = {
   id: number
-  image?: string
+  image: string
   name: string
   gender: string
   species: string
-  status?: string
+  status: string
   episode: string[]
   origin: {
     name: string
@@ -14,11 +14,25 @@ export type PersonajeItemProps = {
   location: {
     name: string
   }
-  url?: string
+  url: string
 }
 
 export type PersonajeItemParentProps = {
   children: ReactNode
+}
+
+export type PersonajeItemInfoProps = {
+  id: number
+  name: string
+  gender: string
+  species: string
+  origin: {
+    name: string
+  }
+  location: {
+    name: string
+  }
+  episode: string[]
 }
 
 export interface PersonajeFichaProps {
@@ -38,4 +52,14 @@ export interface PersonajeInteraccionesProps {
 
 export type PersonajesListaProps = {
   data: PersonajeItemProps[]
+}
+
+export type PersonajeItemImageProps = {
+  image: string
+  name: string
+  id: number
+}
+
+export type PersonajeItemStatusProps = {
+  status: string
 }
