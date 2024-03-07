@@ -1,3 +1,3 @@
-// contiene info api
+// info api
 
 export const apiUrl = 'https://rickandmortyapi.com/api/character/'

@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/react-router'
+import CustomLink from './CustomLink'
 
 const headerLinks = [
   {
@@ -12,12 +12,7 @@ export default function HeaderLinks() {
     <ul className='flex gap-2 items-center'>
       {headerLinks.map((link, idx) => (
         <li key={idx}>
-          <Link
-            to={link.url}
-            className='[&.active]:font-bold [&.active]:text-[orangered]  hover:text-[orangered] transition:all_.3s_ease-in-out hover:[transition:all_.3s_ease-in-out]'
-          >
-            {link.texto}
-          </Link>
+          <CustomLink url={link.url} text={link.texto} />
         </li>
       ))}
     </ul>

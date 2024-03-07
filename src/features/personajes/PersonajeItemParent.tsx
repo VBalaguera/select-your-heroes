@@ -3,11 +3,8 @@
 
 import React from 'react'
 import {
-  PersonajeItemImageProps,
-  PersonajeItemInfoProps,
   PersonajeItemParentProps,
   PersonajeItemProps,
-  PersonajeItemStatusProps,
 } from '../../types/personajes'
 
 import { Link } from '@tanstack/react-router'
@@ -29,7 +26,15 @@ const PersonajeItemParent = ({ children }: PersonajeItemParentProps) => {
 }
 
 // imagen principal
-const PersonajeItemImage = ({ image, name, id }: PersonajeItemImageProps) => {
+const PersonajeItemImage = ({
+  image,
+  name,
+  id,
+}: {
+  image: string
+  name: string
+  id: number
+}) => {
   return (
     <Link
       to='/personajes/$id'
@@ -51,7 +56,7 @@ const PersonajeItemInfo = ({
   origin,
   location,
   episode,
-}: PersonajeItemInfoProps) => {
+}: PersonajeItemProps) => {
   return (
     <div className='flex flex-col gap-2 w-full items-center justify-center'>
       {/* nombre y link a su ficha */}
@@ -77,37 +82,8 @@ const PersonajeItemInfo = ({
   )
 }
 
-// TODO: mantener este comp?
-const PersonajeItemBoton = ({
-  esFavorito,
-  item,
-  borrarFavorito,
-  handleAñadirFavorito,
-}: {
-  // TODO: refactor this
-  esFavorito: boolean
-  item: PersonajeItemProps
-  borrarFavorito: (item: PersonajeItemProps) => void
-  handleAñadirFavorito: (item: PersonajeItemProps) => void
-}) => {
-  return (
-    <div className='flex gap-2 w-full'>
-      {' '}
-      {esFavorito ? (
-        <button className='w-full' onClick={() => borrarFavorito(item)}>
-          Borrar favorito.
-        </button>
-      ) : (
-        <button className='w-full' onClick={() => handleAñadirFavorito(item)}>
-          Añadir favorito.
-        </button>
-      )}
-    </div>
-  )
-}
-
 // status
-const PersonajeItemStatus = ({ status }: PersonajeItemStatusProps) => {
+const PersonajeItemStatus = ({ status }: { status: string }) => {
   return (
     <span
       className={`text-[white] font-bold px-4 py-[.4rem] rounded-[8px] capitalize personaje-status-${status}`}
@@ -120,6 +96,5 @@ const PersonajeItemStatus = ({ status }: PersonajeItemStatusProps) => {
 PersonajeItemParent.Image = PersonajeItemImage
 PersonajeItemParent.Info = PersonajeItemInfo
 PersonajeItemParent.Status = PersonajeItemStatus
-PersonajeItemParent.Boton = PersonajeItemBoton
 
 export default PersonajeItemParent

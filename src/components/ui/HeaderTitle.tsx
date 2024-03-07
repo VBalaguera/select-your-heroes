@@ -1,16 +1,10 @@
 // Título de la app
-
-import { Link } from '@tanstack/react-router'
+import CustomLink from './CustomLink'
 
 export default function HeaderTitle() {
   return (
     <span className='text-2xl font-bold'>
-      <Link
-        to='/'
-        className='[&.active]:font-bold [&.active]:text-[orangered]  hover:text-[orangered] transition:all_.3s_ease-in-out hover:[transition:all_.3s_ease-in-out]'
-      >
-        Select your heroes
-      </Link>
+      <CustomLink url='/' text='Select your heroes' />
     </span>
   )
 }

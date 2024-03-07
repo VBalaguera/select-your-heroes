@@ -5,19 +5,15 @@
 // num total de páginas
 // nombre de ítem en paginación para control estado
 
+import { PaginacionProps } from '../../types/paginacion'
+
 export default function Paginacion({
   isPlaceholderData,
   pagina,
   setPagina,
   numPaginas,
   nombrePagina,
-}: {
-  isPlaceholderData?: boolean
-  pagina: number
-  setPagina: (pagina: number) => void
-  numPaginas: number
-  nombrePagina: string
-}) {
+}: PaginacionProps) {
   const pagIncremento = () => {
     if (!isPlaceholderData) {
       setPagina(pagina - 1)

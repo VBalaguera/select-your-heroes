@@ -27,9 +27,11 @@ El proyecto ejecuta las siguientes funciones:
 
 ## Estructura de rutas del proyecto
 
-1. /
-2. /favoritos
-3. /personajes/:id
+```
+/
+/favoritos
+/personajes/:id
+```
 
 ## Estructura de archivos del proyecto
 
