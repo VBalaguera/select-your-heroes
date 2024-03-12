@@ -30,15 +30,12 @@ export type PersonajeItemImageProps = Pick<
   'image' | 'name' | 'id'
 >
 
-export interface PersonajeFichaProps {
+export interface PersonajeInteraccionesProps {
+  esFavorito: boolean | undefined
   item: PersonajeItemProps
-  esFavorito?: boolean | undefined
-  handleAñadirFavorito?: (item: PersonajeItemProps) => void | undefined
-  borrarFavorito?: (item: PersonajeItemProps) => void | undefined
-  hasButton?: boolean
+  borrarFavorito: (item: PersonajeItemProps) => void
+  handleAñadirFavorito: (item: PersonajeItemProps) => void
 }
-
-export type PersonajeInteraccionesProps = Omit<PersonajeFichaProps, 'hasButton'>
 
 export type PersonajesListaProps = {
   data: PersonajeItemProps[]
