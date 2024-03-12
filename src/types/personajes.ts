@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-export type PersonajeItemProps = {
+export interface PersonajeItemProps {
   id: number
   image: string
   name: string
@@ -21,19 +21,14 @@ export type PersonajeItemParentProps = {
   children: ReactNode
 }
 
-export type PersonajeItemInfoProps = {
-  id: number
-  name: string
-  gender: string
-  species: string
-  origin: {
-    name: string
-  }
-  location: {
-    name: string
-  }
-  episode: string[]
-}
+export type PersonajeItemInfoProps = Omit<PersonajeItemProps, 'status' | 'url'>
+
+export type PersonajeItemStatusProps = Pick<PersonajeItemProps, 'status'>
+
+export type PersonajeItemImageProps = Pick<
+  PersonajeItemProps,
+  'image' | 'name' | 'id'
+>
 
 export interface PersonajeFichaProps {
   item: PersonajeItemProps
@@ -43,23 +38,8 @@ export interface PersonajeFichaProps {
   hasButton?: boolean
 }
 
-export interface PersonajeInteraccionesProps {
-  esFavorito: boolean
-  item: PersonajeItemProps
-  borrarFavorito: (item: PersonajeItemProps) => void
-  handleAñadirFavorito: (item: PersonajeItemProps) => void
-}
+export type PersonajeInteraccionesProps = Omit<PersonajeFichaProps, 'hasButton'>
 
 export type PersonajesListaProps = {
   data: PersonajeItemProps[]
-}
-
-export type PersonajeItemImageProps = {
-  image: string
-  name: string
-  id: number
-}
-
-export type PersonajeItemStatusProps = {
-  status: string
 }

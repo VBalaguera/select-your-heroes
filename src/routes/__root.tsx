@@ -10,7 +10,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      // time that the data will remain in cache
+      // tiempo que los datos permanecerán en cache
       staleTime: 0,
     },
   },
