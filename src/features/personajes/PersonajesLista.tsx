@@ -2,7 +2,10 @@
 // incl métodos para añadir/borrar personajes
 
 import { useEffect, useState } from 'react'
-import { PersonajeItemProps } from '../../types/personajes'
+import {
+  PersonajeItemProps,
+  PersonajesListaProps,
+} from '../../types/personajes'
 import PersonajeFicha from './PersonajeFicha'
 import {
   localStorageGetItem,
@@ -15,7 +18,7 @@ import {
 import PersonajeInteracciones from './PersonajeInteracciones'
 import { useFavoritosStore } from '../../store/store'
 
-export default function PersonajesLista(data: PersonajeItemProps[]) {
+export default function PersonajesLista({ data }: PersonajesListaProps) {
   const [listaFavoritos, setListaFavoritos] = useState<
     PersonajeItemProps[] | []
   >(useFavoritosStore((state) => state.favoritos))

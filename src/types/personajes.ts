@@ -36,3 +36,7 @@ export interface PersonajeInteraccionesProps {
   borrarFavorito: (item: PersonajeItemProps) => void
   handleAñadirFavorito: (item: PersonajeItemProps) => void
 }
+
+export type PersonajesListaProps = {
+  data: PersonajeItemProps[]
+}
